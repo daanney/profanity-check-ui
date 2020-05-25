@@ -1,6 +1,6 @@
 // this server should only be used as proxy on a server
 
-if(process.env.NODE_ENV !== 'production') {
+if(process.env.NODE_ENV === 'production') {
 	const express = require('express')
 	const app = express()
 	const path = require('path')
@@ -11,11 +11,10 @@ if(process.env.NODE_ENV !== 'production') {
 
 	app.use('/api', createProxyMiddleware({ target: proxyServer, changeOrigin: true }))
 	
-	app.use(express.static(path.join(__dirname, './build')))
+	app.use(express.static(path.join(__dirname, './client/build')))
 	app.get('*', (req, res) => {
-		res.sendFile(path.join(__dirname, './build', 'index.html'))
+		res.sendFile(path.join(__dirname, './client/build', 'index.html'))
 	})
 
 	app.listen(port)
 }
-
