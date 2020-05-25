@@ -11,6 +11,8 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import Col from 'react-bootstrap/Col'
 import Alert from 'react-bootstrap/Alert'
 
+import './wordlist.styles.scss'
+
 const WordListPage =({ message, loadBannedWordsStart, createBannedWord })=> {
 	useEffect(() => { loadBannedWordsStart() }, [loadBannedWordsStart])
 
@@ -36,7 +38,7 @@ const WordListPage =({ message, loadBannedWordsStart, createBannedWord })=> {
 				<BannedWordList />
 			</Suspense>
 			
-			<Jumbotron>
+			<Jumbotron className='create-banned-word'>
 				<h2>Create New</h2>
 				{ message && <Alert variant={message.type}>{message.body}</Alert> }
 				<Form onSubmit={onFormSubmit}>

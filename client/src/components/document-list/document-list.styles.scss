@@ -5,6 +5,7 @@
 	& span {
 		display: inline-block;
 		justify-content: flex-end;
+		line-height: 1;
 	}
 
 	& .badge {
@@ -12,7 +13,6 @@
 	}
 
 	& .filename {
-		font-size: 14px;
 		font-weight: bold;
 		margin-right: auto;
 	}

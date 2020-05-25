@@ -18,8 +18,8 @@ const DocumentList =({ noteId, documents })=> {
 			{documents && documents.length ? documents.map((doc) => (
 				<ListGroup.Item key={doc.id}>
 					<span className='filename'>{doc.name}</span>
-					<Badge variant='warning'>{doc.type}</Badge>
-					<Badge variant='secondary'>{doc.size > 1024 
+					<Badge variant='warning' pill>{doc.type}</Badge>
+					<Badge variant='secondary' pill>{doc.size > 1024 
 						? (doc.size / 1024 > 1024 
 							? `${~~(doc.size / 1024 / 1024)}  M` 
 							: `${~~(doc.size / 1024)}  K` 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { selectActionMessage } from '../../redux/documents/documents.selectors'
@@ -8,6 +8,9 @@ import Alert from 'react-bootstrap/Alert'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import Badge from 'react-bootstrap/Badge'
+
+import './client-note.styles.scss'
 
 const ClientNote =({ note, message, loadDocumentsStart, uploadDocument })=> {
 	const [ file, setFile ] = useState(null)
@@ -29,12 +32,12 @@ const ClientNote =({ note, message, loadDocumentsStart, uploadDocument })=> {
 	}
 
 	return (
-		<Jumbotron>
-			<h2>{note.name}</h2>
+		<Jumbotron className='client-note'>
+			<h2>{note.name} <Badge variant='dark'>#{note.id}</Badge></h2>
 			<p>{note.description}</p>
-			<Suspense fallback={<Alert variant='primary'>Loading ...</Alert>}>
-				<DocumentList noteId={note.id} />
-			</Suspense>
+
+			<DocumentList noteId={note.id} />
+
 			<h3>Attach documents</h3>
 			{ message && <Alert variant={message.type}>{message.body}</Alert> }
 			<Form onSubmit={triggerUpload}>
