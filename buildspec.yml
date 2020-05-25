@@ -4,4 +4,11 @@ phases:
   install:
     commands:
       - npm install
+  build:
+    commands:
       - npm run build
+artifacts:
+  paths:
+    - './client/build/**/*'
+    - './package*.json'
+    - './*.js'
