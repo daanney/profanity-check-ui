@@ -4,3 +4,4 @@ phases:
   install:
     commands:
       - npm install
+      - npm run build
