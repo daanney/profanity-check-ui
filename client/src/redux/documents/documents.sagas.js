@@ -14,17 +14,24 @@ export function* loadDocuments() {
 }
 
 export function* uploadDocument({ payload }) {
+	let message = { type: 'danger', body: 'An unhandled error occured. Please contact the admins ..' }
+
 	try {
 		yield put(updateMessage({ type: 'info', body: 'Creating record ...' }))
 		const config = { headers: {'content-type': 'multipart/form-data'}}
 		const response = yield axios.post('/api/documents', payload, config)
-		yield put(updateMessage({ type: 'success', body: response.data.message }))
-		yield put(loadDocumentsStart())
+		message = { type: 'success', body: response.data.message }
 	}catch(error) {
-		console.log(error);
-		console.log(error.response);
-		yield put(updateMessage({ type: 'danger', body: error.response.data.message }))
+		if(error.response) {
+			// TODO: better error handling. for this use case, we assume that the file is too large
+			if(error.response.data.message) message.body = error.response.data.message
+			else if(error.response.status === 413) message.body = 'The supplied file is too large'
+		}
 	}
+
+	yield put(updateMessage(message))
+	// refresh document list in any result above
+	yield put(loadDocumentsStart())
 }
 
 export function* onLoadDocumentsStart() {
