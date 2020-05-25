@@ -20,6 +20,6 @@ export const uploadDocument =(formData)=> ({
 })
 
 export const updateMessage =(message)=> ({
-	type: DocumentActionTypes.ACTION_MESSAGE,
+	type: DocumentActionTypes.DOCUMENTS_ACTION_MESSAGE,
 	payload: message
 })

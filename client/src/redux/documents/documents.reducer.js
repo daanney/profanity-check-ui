@@ -2,7 +2,8 @@ import DocumentActionTypes from './documents.types'
 
 const INITIAL_STATE = {
 	error: null,
-	documents: null
+	documents: null,
+	actionMessage: null
 }
 
 const documentsReducer =(state = INITIAL_STATE, action)=> {
@@ -13,7 +14,7 @@ const documentsReducer =(state = INITIAL_STATE, action)=> {
 		case DocumentActionTypes.LOAD_DOCUMENTS_FAILURE:
 			return { ...state, error: action.payload }
 
-		case DocumentActionTypes.ACTION_MESSAGE:
+		case DocumentActionTypes.DOCUMENTS_ACTION_MESSAGE:
 			return { ...state, actionMessage: action.payload }
 
 		default: return state

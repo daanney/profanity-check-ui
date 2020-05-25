@@ -6,16 +6,24 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import Badge from 'react-bootstrap/Badge'
 import Alert from 'react-bootstrap/Alert'
 
-const DocumentList =({ documents })=> {
+import './document-list.styles.scss'
+
+const DocumentList =({ noteId, documents })=> {
+	// typically, we would fetch documents related to passed noteId here
+
 	return (
 		<React.Fragment>
 			<h3>Attached documents</h3>
-			<ListGroup>
+			<ListGroup className='document-list'>
 			{documents && documents.length ? documents.map((doc) => (
 				<ListGroup.Item key={doc.id}>
-					<Badge variant='secondary'>{~~(doc.size / 1024)} KB</Badge> 
-					<span> {doc.name}</span> 
-					{JSON.stringify(doc)}
+					<span className='filename'>{doc.name}</span>
+					<Badge variant='warning'>{doc.type}</Badge>
+					<Badge variant='secondary'>{doc.size > 1024 
+						? (doc.size / 1024 > 1024 
+							? `${~~(doc.size / 1024 / 1024)}  M` 
+							: `${~~(doc.size / 1024)}  K` 
+						) : `${doc.size} `}B</Badge> 
 				</ListGroup.Item>
 			)) : <Alert variant='info'>No documents found</Alert>}
 			</ListGroup>

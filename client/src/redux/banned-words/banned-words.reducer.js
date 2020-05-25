@@ -14,7 +14,7 @@ const bannedWordsReducer =(state = INITIAL_STATE, action)=> {
 		case BannedWordsActionTypes.LOAD_WORDS_FAILURE:
 			return { ...state, error: action.payload }
 
-		case BannedWordsActionTypes.ACTION_MESSAGE:
+		case BannedWordsActionTypes.WORDS_ACTION_MESSAGE:
 			return { ...state, actionMessage: action.payload }
 
 		default: return state

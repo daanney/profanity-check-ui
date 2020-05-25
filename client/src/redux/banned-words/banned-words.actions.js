@@ -25,6 +25,6 @@ export const deleteBannedWord =(id)=> ({
 })
 
 export const updateMessage =(message)=> ({
-	type: BannedWordsActionTypes.ACTION_MESSAGE,
+	type: BannedWordsActionTypes.WORDS_ACTION_MESSAGE,
 	payload: message
 })

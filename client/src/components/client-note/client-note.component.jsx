@@ -33,7 +33,7 @@ const ClientNote =({ note, message, loadDocumentsStart, uploadDocument })=> {
 			<h2>{note.name}</h2>
 			<p>{note.description}</p>
 			<Suspense fallback={<Alert variant='primary'>Loading ...</Alert>}>
-				<DocumentList />
+				<DocumentList noteId={note.id} />
 			</Suspense>
 			<h3>Attach documents</h3>
 			{ message && <Alert variant={message.type}>{message.body}</Alert> }

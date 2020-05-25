@@ -1,0 +1,27 @@
+.document-list .list-group-item {
+	display: flex;
+	justify-content: space-between;
+	
+	& span {
+		display: inline-block;
+		justify-content: flex-end;
+	}
+
+	& .badge {
+		margin-left: 5px;
+	}
+
+	& .filename {
+		font-size: 14px;
+		font-weight: bold;
+		margin-right: auto;
+	}
+	
+	@media screen and (max-width: 400px) {
+		flex-direction: column;
+
+		& .badge {
+			margin: 2px 5px;
+		}
+	}
+}
