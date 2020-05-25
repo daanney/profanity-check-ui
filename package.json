@@ -15,8 +15,9 @@
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "node server.js",
-    "build": "cd client && npm i && npm run build",
-    "test": "cd client && npm run test"
+    "build": "cd client && npm run build",
+    "test": "cd client && npm run test",
+    "postinstall": "cd client && npm i"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
