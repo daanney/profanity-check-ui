@@ -17,7 +17,7 @@
     "start": "node server.js",
     "build": "cd client && npm run build",
     "test": "cd client && npm run test",
-    "postinstall": "cd client && npm i"
+    "postinstall": "cd client && npm install"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
